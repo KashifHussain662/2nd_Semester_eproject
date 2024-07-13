@@ -1,0 +1,56 @@
+body {
+    background-color: #f8f9fa;
+}
+
+
+#main {
+    background: url('../images/register.webp') no-repeat center center;
+    background-size: cover;
+}
+
+#main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.655);
+
+}
+
+.card {
+    width: 80%;
+    border: none;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#profileImg {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    background-color: #343a40;
+    color: #ffffff;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-size: 1rem;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Results</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+   <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+        <a class="navbar-brand text-light" href="index.html">Lawyer Services</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto" id="navbarNavItems">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="./Login/index.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="./Register/index.html">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  <div class="container mt-4">
+    <h1 class="text-center">All Results</h1>
+    <div id="allResults" class="row text-dark mt-4">
+      <!-- All lawyer cards will be appended here -->
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="bg-dark text-white mt-5">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2024 Lawyer Services. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <a href="#" class="text-white ml-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white ml-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white ml-3"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white ml-3"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const user = localStorage.getItem("user");
+  let userData = null;
+
+  console.log("User data from local storage:", user);
+
+  if (user && user !== "undefined") {
+    try {
+      userData = JSON.parse(user);
+      console.log("Parsed user data:", userData);
+    } catch (e) {
+      console.error("Error parsing user data:", e);
+    }
+  } else {
+    console.warn("No user data found in local storage.");
+  }
+
+  const userContainer = document.getElementById("userContainer");
+  if (userData) {
+    
+    const navbarNavItems = document.getElementById("navbarNavItems");
+    navbarNavItems.innerHTML = `
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#" id="logout">Logout</a>
+      </li>
+    `;
+
+    document.getElementById("logout").addEventListener("click", function () {
+      localStorage.removeItem("user");
+      window.location.href = "./Login/index.html";
+    });
+  }
+      const allResultsContainer = document.getElementById("allResults");
+      const searchResults = JSON.parse(localStorage.getItem("searchResults")) || [];
+
+      searchResults.forEach((result) => {
+        const card = document.createElement("div");
+        card.classList.add("col-md-4");
+        card.innerHTML = `
+          <div class="card mt-4">
+            <img src="${result.img}" class="card-img-top" alt="${result.name}">
+            <div class="card-body">
+              <h5 class="card-title">${result.name}</h5>
+              <p class="card-text">Location: ${result.location}</p>
+              <p class="card-text">Service: ${result.service}</p>
+              <a href="./View_Profile/index.html?id=${result.id}&name=${encodeURIComponent(result.name)}&location=${encodeURIComponent(result.location)}&service=${encodeURIComponent(result.service)}&img=${encodeURIComponent(result.img)}" class="btn btn-primary">View Profile</a>
+            </div>
+          </div>
+        `;
+        allResultsContainer.appendChild(card);
+      });
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
