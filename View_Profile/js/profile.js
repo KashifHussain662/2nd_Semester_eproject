@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
       <li class="nav-item">
-        <a class="nav-link text-light" href="#" id="logout">Logout</a>
+        <a class="nav-link text-light custom_btn" href="#" id="logout">Logout</a>
       </li>
     `;
 

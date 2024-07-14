@@ -7,7 +7,7 @@
     <title>Lawyer Services</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link href="styles.css" rel="stylesheet">
@@ -19,20 +19,21 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
         <a class="navbar-brand text-light" href="index.html">Lawyer Services</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-light"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto" id="navbarNavItems">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="./Login/index.html">Login</a>
+                    <a class="nav-link text-center text-light " href="./Login/index.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="./Register/index.html">Register</a>
+                    <a class="nav-link text-center text-light " href="./Register/index.html">Register</a>
                 </li>
             </ul>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -42,7 +43,7 @@
                 <div id="userContainer"></div>
                 <p class="text-center mb-6">Search by location, services and schedule a meeting</p>
             </div>
-            
+
             <!-- Search Form -->
             <div id="searchContainer">
                 <form id="searchForm">
@@ -66,7 +67,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <button type="submit" class="btn btn-block">Search</button>
+                            <button type="submit" class="custom_btn btn-block">Search</button>
                         </div>
                     </div>
                 </form>
@@ -91,66 +92,150 @@
                     <img class="img-fluid rounded" src="./images/card/card-2.webp" alt="">
                 </div>
                 <div class="col-lg-7 mt-4 mt-lg-0 reveal-right">
-                    <h2 class="position-relative text-center bg-white rounded p-3 mt-4 mb-4 d-none d-lg-block reveal-top shadow" style="width: 350px; margin-left: -205px; color:  #b5b21e; ">25 Years Experience</h2>
+                    <h2 class="position-relative text-center bg-white rounded p-3 mt-4 mb-4 d-none d-lg-block reveal-top shadow" style="width: 350px; margin-left: -205px; color:#e3bd15;">25 Years Experience</h2>
                     <h6 class="text-uppercase">Learn About Us</h6>
-                    <h1 class="mb-4">We Provide Reliable And Effective Legal Services</h1>
-                    <p>Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est dolor
+                    <h1 class="mb-4 text-light">We Provide Reliable And Effective Legal Services</h1>
+                    <p class="text-light">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est dolor
                         eirmod.</p>
-                    <a href="" class="btn mt-3 py-2 px-4">Learn More</a>
+                    <a href="" class="custom_btn mt-3 py-2 px-4">Learn More</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid py-5">
+    <!-- Why Choose Us Section -->
+    <div class="container-fluid py-5 features ">
         <div class="container py-5">
             <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100 rounded overflow-hidden">
-                        <img class="position-absolute w-100 h-100" src="./images/feature.jpg" style="object-fit: cover;">
-                    </div>
+                <div class="col-lg-6 d-flex align-items-center reveal-right">
+                    <img class="img-fluid rounded" src="./images/card/card-2.webp" alt="Why Choose Us">
                 </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="feature-text bg-white rounded p-lg-5">
-                        <h6 class="text-uppercase">Our Features</h6>
-                        <h1 class="mb-4">Why Choose Us</h1>
-                        <div class="d-flex mb-4">
-                            <div class="btn-primary btn-lg-square px-3" style="border-radius: 50px;">
-                                <h5 class="text-secondary m-0">01</h5>
-                            </div>
-                            <div class="ml-4">
-                                <h5>Best Law Practices</h5>
-                                <p class="m-0">Ipsum duo tempor elitr rebum stet magna amet kasd. Ipsum magna ipsum ipsum stet ipsum</p>
-                            </div>
+                <div class="col-lg-6 reveal-left">
+                    <h6 class="text-uppercase text-light">Our Features</h6>
+                    <h1 class="mb-4 text-light">Why Choose Us</h1>
+                    <div class="d-flex mb-3">
+                        <div class="bg-golden text-white p-3 rounded-circle mr-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            01
                         </div>
-                        <div class="d-flex mb-4">
-                            <div class="btn-primary btn-lg-square px-3" style="border-radius: 50px;">
-                                <h5 class="text-secondary m-0">02</h5>
-                            </div>
-                            <div class="ml-4">
-                                <h5>Efficiency & Trust</h5>
-                                <p class="m-0">Ipsum duo tempor elitr rebum stet magna amet kasd. Ipsum magna ipsum ipsum stet ipsum</p>
-                            </div>
+                        <div>
+                            <h5 class="text-light">Best Law Practices</h5>
+                            <p class="text-light">Ipsum duo tempor elitr rebum stet magna amet kasd. Ipsum magna ipsum ipsum stet ipsum</p>
                         </div>
-                        <div class="d-flex">
-                            <div class="btn-primary btn-lg-square px-3" style="border-radius: 50px;">
-                                <h5 class="text-secondary m-0">03</h5>
-                            </div>
-                            <div class="ml-4">
-                                <h5>Results You Deserve</h5>
-                                <p class="m-0">Ipsum duo tempor elitr rebum stet magna amet kasd. Ipsum magna ipsum ipsum stet ipsum</p>
-                            </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="bg-golden text-white p-3 rounded-circle mr-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                           02</div>
+                        <div>
+                            <h5 class="text-light">Efficiency & Trust</h5>
+                            <p class="text-light">Ipsum duo tempor elitr rebum stet magna amet kasd. Ipsum magna ipsum ipsum stet ipsum</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="bg-golden text-white p-3 rounded-circle mr-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                           03</div>
+                        <div>
+                            <h5 class="text-light">Results You Deserve</h5>
+                            <span class="text-light">Ipsum duo tempor elitr rebum stet magna amet kasd. Ipsum magna ipsum ipsum stet ipsum</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- FAQ Section -->
+    <section class="faq py-5">
+        <div class="container">
+            <h2 class="text-center text-light mb-5">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="card">
+                    <div class="card-header" id="faqHeadingOne">
+                        <h2 class="mb-0 ">
+                            <button class="btn btn-link text-dark bg-light" type="button" data-toggle="collapse"
+                                data-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                                What services do you offer?
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="faqCollapseOne" class="collapse show" aria-labelledby="faqHeadingOne"
+                        data-parent="#faqAccordion">
+                        <div class="card-body">
+                            We offer a wide range of legal services including criminal law, divorce law, civil law, and affidavit
+                            services.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="faqHeadingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link text-dark collapsed bg-light" type="button" data-toggle="collapse"
+                                data-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                                How can I schedule a meeting?
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="faqCollapseTwo" class="collapse" aria-labelledby="faqHeadingTwo"
+                        data-parent="#faqAccordion">
+                        <div class="card-body">
+                            You can schedule a meeting through our website using the meeting scheduling form in the lawyer
+                            profile section.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="faqHeadingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link text-dark collapsed bg-light" type="button" data-toggle="collapse"
+                                data-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                                What are your office hours?
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="faqCollapseThree" class="collapse" aria-labelledby="faqHeadingThree"
+                        data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Our office hours are Monday to Friday, 9:00 AM to 5:00 PM.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-dark text-white mt-5">
-        <div class="container py-4">
+        <div class="container py-5">
             <div class="row">
+                <!-- Contact Us -->
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <p><i class="fas fa-map-marker-alt mr-2"></i> 123 Lawyer St, Legal City, 56789</p>
+                    <p><i class="fas fa-phone-alt mr-2"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope mr-2"></i> info@lawyerservices.com</p>
+                </div>
+                <!-- Quick Links -->
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">About Us</a></li>
+                        <li><a href="#" class="text-white">Services</a></li>
+                        <li><a href="#" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- Subscribe -->
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Subscribe to Our Newsletter</h5>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn custom_btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4">
                 <div class="col-md-6">
                     <p class="mb-0">&copy; 2024 Lawyer Services. All Rights Reserved.</p>
                 </div>

@@ -19,13 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
   if (userData) {
     userContainer.innerHTML = `
       <h3>Welcome, ${userData.name}</h3>
-      <p>Email: ${userData.email}</p>
     `;
 
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
       <li class="nav-item">
-        <a class="nav-link text-light" href="#" id="logout">Logout</a>
+        <a class="nav-link text-light custom_btn" href="#" id="logout">Logout</a>
       </li>
     `;
 
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "./Login/index.html";
     });
   } else {
-    userContainer.innerHTML = `<p>No user data found. Please log in.</p>`;
+    userContainer.innerHTML = `<p></p>`;
   }
 
   toastr.options = {
@@ -124,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
               result.service
             )}&img=${encodeURIComponent(result.img)}&id=${encodeURIComponent(
               result.id
-            )}" class="btn btn-primary">View Profile</a>
+            )}" class="custom_btn p-2">View Profile</a>
               </div>
             </div>
           `;
@@ -140,12 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Add "View All Results" button
           if (filteredResults.length > 3) {
             const viewAllButton = document.createElement("a");
-            viewAllButton.classList.add(
-              "btn",
-              "btn-secondary",
-              "mt-4",
-              "center"
-            );
+            viewAllButton.classList.add("custom_btn", "mt-4", "center");
             viewAllButton.href = "./allResults.html";
             viewAllButton.textContent = "View All Results";
             resultsContainer.appendChild(viewAllButton);
