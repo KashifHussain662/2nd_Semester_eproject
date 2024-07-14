@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("registerForm")
     .addEventListener("submit", function (e) {
       e.preventDefault();
+      document.querySelector(".loader-container").style.display = "flex";
 
       var formData = new FormData();
       formData.append("name", document.getElementById("registerName").value);
@@ -54,33 +55,52 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       }
 
+      // Show loader for at least 3-4 seconds
+      const MINIMUM_LOADING_TIME = 4000;
+      const startTime = Date.now();
+
       fetch("http://192.168.1.6/lawyer_services/backend/register.php", {
         method: "POST",
         body: formData,
       })
-        .then((response) => response.text()) // Use text() to handle non-JSON responses
+        .then((response) => response.text())
         .then((text) => {
-          try {
-            const data = JSON.parse(text); // Try to parse JSON
-            if (data.status === "success") {
-              toastr.success("Registration successful!", "Success");
-              setTimeout(function () {
-                window.location.href = "../login/index.html";
-              }, 1500);
-            } else {
+          const elapsedTime = Date.now() - startTime;
+          const remainingTime = MINIMUM_LOADING_TIME - elapsedTime;
+
+          setTimeout(() => {
+            document.querySelector(".loader-container").style.display = "none";
+            try {
+              const data = JSON.parse(text);
+              if (data.status === "success") {
+                toastr.success("Registration successful!", "Success");
+                setTimeout(function () {
+                  window.location.href = "../login/index.html";
+                }, 1500);
+              } else {
+                toastr.error(
+                  "Registration failed: " + data.message,
+                  "Registration Error"
+                );
+              }
+            } catch (error) {
+              console.error("Non-JSON response:", text);
               toastr.error(
-                "Registration failed: " + data.message,
-                "Registration Error"
+                "An error occurred. Please try again later.",
+                "Error"
               );
             }
-          } catch (error) {
-            console.error("Non-JSON response:", text); // Log non-JSON response
-            toastr.error("An error occurred. Please try again later.", "Error");
-          }
+          }, Math.max(0, remainingTime));
         })
         .catch((error) => {
-          console.error("Fetch error:", error);
-          toastr.error("An error occurred. Please try again later.", "Error");
+          const elapsedTime = Date.now() - startTime;
+          const remainingTime = MINIMUM_LOADING_TIME - elapsedTime;
+
+          setTimeout(() => {
+            document.querySelector(".loader-container").style.display = "none";
+            console.error("Fetch error:", error);
+            toastr.error("An error occurred. Please try again later.", "Error");
+          }, Math.max(0, remainingTime));
         });
     });
 });
