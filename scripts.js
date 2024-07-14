@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Add "View All Results" button
           if (filteredResults.length > 3) {
             const viewAllButton = document.createElement("a");
-            viewAllButton.classList.add("custom_btn", "mt-4", "center");
+            viewAllButton.classList.add("custom_btn", "mt-4", "self-center");
             viewAllButton.href = "./allResults.html";
             viewAllButton.textContent = "View All Results";
             resultsContainer.appendChild(viewAllButton);

@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lawyerImg = urlParams.get("img");
   const lawyerId = urlParams.get("id");
 
+  console.log("lawyerImg", lawyerImg);
   console.log("lawyerId :", lawyerId);
 
   document.getElementById("profileName").textContent = lawyerName;
@@ -44,7 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
     "Location: " + lawyerLocation;
   document.getElementById("profileService").textContent =
     "Service: " + lawyerService;
-  document.getElementById("profileImg").src = decodeURIComponent(lawyerImg);
+
+  // Construct the correct path for the image
+  const imgPath = `../${decodeURIComponent(lawyerImg)}`;
+  console.log("Image path: ", imgPath);
+  document.getElementById("profileImg").src = imgPath;
+
+  document.getElementById("profileImg").addEventListener("error", function () {
+    console.error("Error loading image at path: ", imgPath);
+    document.getElementById("profileImg").alt = "Image not found";
+  });
 
   document
     .getElementById("appointmentForm")
