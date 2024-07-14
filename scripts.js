@@ -83,6 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const location = document.getElementById("location").value.toLowerCase();
       const services = document.getElementById("services").value.toLowerCase();
 
+      document.querySelector(".loader-container").style.display = "flex"; // Show loader
+
       fetch("http://192.168.1.6/lawyer_services/backend/search.php", {
         method: "POST",
         headers: {
@@ -101,32 +103,33 @@ document.addEventListener("DOMContentLoaded", function () {
               (services === "" || result.service === services)
             );
           });
+
           console.log(results);
 
           filteredResults.slice(0, 3).forEach((result) => {
             const card = document.createElement("div");
             card.classList.add("col-md-4");
             card.innerHTML = `
-            <div class="card">
-              <img src="${result.img}" class="card-img-top" alt="${
+                  <div class="card">
+                    <img src="${result.img}" class="card-img-top" alt="${
               result.name
             }">
-              <div class="card-body ">
-                <h5 class="card-title">${result.name}</h5>
-                <p class="card-text">Location: ${result.location}</p>
-                <p class="card-text">Service: ${result.service}</p>
-                <a href="./View_Profile/index.html?name=${encodeURIComponent(
-                  result.name
-                )}&location=${encodeURIComponent(
+                    <div class="card-body">
+                      <h5 class="card-title">${result.name}</h5>
+                      <p class="card-text">Location: ${result.location}</p>
+                      <p class="card-text">Service: ${result.service}</p>
+                      <a href="./View_Profile/index.html?name=${encodeURIComponent(
+                        result.name
+                      )}&location=${encodeURIComponent(
               result.location
             )}&service=${encodeURIComponent(
               result.service
             )}&img=${encodeURIComponent(result.img)}&id=${encodeURIComponent(
               result.id
             )}" class="custom_btn p-2">View Profile</a>
-              </div>
-            </div>
-          `;
+                    </div>
+                  </div>
+                `;
             resultsContainer.appendChild(card);
           });
 
@@ -148,6 +151,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) => {
           console.error("Error:", error);
           toastr.error("An error occurred. Please try again later.", "Error");
+        })
+        .finally(() => {
+          document.querySelector(".loader-container").style.display = "none"; // Hide loader
         });
     });
 });

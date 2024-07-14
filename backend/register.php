@@ -40,7 +40,7 @@ $created_at = date("Y-m-d H:i:s");
 $img = "";
 
 if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
-    $img = 'uploads/' . basename($_FILES['img']['name']);
+    $img = '../uploads/' . basename($_FILES['img']['name']);
     if (!move_uploaded_file($_FILES['img']['tmp_name'], $img)) {
         echo json_encode(["status" => "error", "message" => "Failed to upload image"]);
         exit();
