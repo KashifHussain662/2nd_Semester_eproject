@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document
-    .getElementById("searchForm")
-    .addEventListener("submit", function (event) {
+  .getElementById("searchForm")
+  .addEventListener("submit", function (event) {
       event.preventDefault();
       const location = document.getElementById("location").value.toLowerCase();
       const services = document.getElementById("services").value.toLowerCase();
@@ -86,74 +86,63 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".loader-container").style.display = "flex"; // Show loader
 
       fetch("http://192.168.1.6/lawyer_services/backend/search.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ location, services }),
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ location, services }),
       })
-        .then((response) => response.json())
-        .then((results) => {
-          const resultsContainer = document.getElementById("lawyerResults");
-          resultsContainer.innerHTML = "";
+          .then((response) => response.json())
+          .then((results) => {
+              const resultsContainer = document.getElementById("lawyerResults");
+              resultsContainer.innerHTML = "";
 
-          const filteredResults = results.filter((result) => {
-            return (
-              (location === "" || result.location.includes(location)) &&
-              (services === "" || result.service === services)
-            );
-          });
+              const filteredResults = results.filter((result) => {
+                  return (
+                      (location === "" || result.location.includes(location)) &&
+                      (services === "" || result.service === services)
+                  );
+              });
 
-          console.log(results);
+              console.log(results);
 
-          filteredResults.slice(0, 3).forEach((result) => {
-            const card = document.createElement("div");
-            card.classList.add("col-md-4");
-            card.innerHTML = `
+              filteredResults.slice(0, 3).forEach((result) => {
+                  const card = document.createElement("div");
+                  card.classList.add("col-md-4");
+                  card.innerHTML = `
                   <div class="card">
-                    <img src="${result.img}" class="card-img-top" alt="${
-              result.name
-            }">
+                    <img src="${result.img}" class="card-img-top" alt="${result.name}">
                     <div class="card-body">
                       <h5 class="card-title">${result.name}</h5>
                       <p class="card-text">Location: ${result.location}</p>
                       <p class="card-text">Service: ${result.service}</p>
-                      <a href="./View_Profile/index.html?name=${encodeURIComponent(
-                        result.name
-                      )}&location=${encodeURIComponent(
-              result.location
-            )}&service=${encodeURIComponent(
-              result.service
-            )}&img=${encodeURIComponent(result.img)}&id=${encodeURIComponent(
-              result.id
-            )}" class="custom_btn p-2">View Profile</a>
+                      <a href="./View_Profile/index.html?name=${encodeURIComponent(result.name)}&location=${encodeURIComponent(result.location)}&service=${encodeURIComponent(result.service)}&img=${encodeURIComponent(result.img)}&id=${encodeURIComponent(result.id)}" class="custom_btn p-2">View Profile</a>
                     </div>
                   </div>
                 `;
-            resultsContainer.appendChild(card);
+                  resultsContainer.appendChild(card);
+              });
+
+              // Store all results in localStorage to access them on allResults.html page
+              localStorage.setItem("searchResults", JSON.stringify(filteredResults));
+
+              // Add "View All Results" button
+              if (filteredResults.length > 3) {
+                  const viewAllButton = document.createElement("a");
+                  viewAllButton.classList.add("custom_btn", "mt-4", "self-center");
+                  viewAllButton.href = "./allResults.html";
+                  viewAllButton.textContent = "View All Results";
+                  resultsContainer.appendChild(viewAllButton);
+              }
+          })
+          .catch((error) => {
+              console.error("Error:", error);
+              toastr.error("An error occurred. Please try again later.", "Error");
+          })
+          .finally(() => {
+              setTimeout(() => {
+                  document.querySelector(".loader-container").style.display = "none"; // Hide loader
+              }, 500); // Delay of 0.5 seconds
           });
-
-          // Store all results in localStorage to access them on allResults.html page
-          localStorage.setItem(
-            "searchResults",
-            JSON.stringify(filteredResults)
-          );
-
-          // Add "View All Results" button
-          if (filteredResults.length > 3) {
-            const viewAllButton = document.createElement("a");
-            viewAllButton.classList.add("custom_btn", "mt-4", "self-center");
-            viewAllButton.href = "./allResults.html";
-            viewAllButton.textContent = "View All Results";
-            resultsContainer.appendChild(viewAllButton);
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          toastr.error("An error occurred. Please try again later.", "Error");
-        })
-        .finally(() => {
-          document.querySelector(".loader-container").style.display = "none"; // Hide loader
-        });
-    });
+  });
 });
