@@ -23,17 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
-     <li class="nav-item">
-    <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
-</li>
-
-
+      <li class="nav-item">
+        <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
+      </li>
     `;
 
     document.getElementById("logout").addEventListener("click", function () {
@@ -88,6 +86,15 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("searchForm")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+
+      if (!userData) {
+        toastr.error("You must be logged in to book an appointment.", "Error");
+        setTimeout(function () {
+          window.location.href = "./Login/index.html";
+        }, 3500);
+        return;
+      }
+
       const location = document.getElementById("location").value.toLowerCase();
       const services = document.getElementById("services").value.toLowerCase();
 
@@ -118,28 +125,28 @@ document.addEventListener("DOMContentLoaded", function () {
             const card = document.createElement("div");
             card.classList.add("col-md-4");
             card.innerHTML = `
-                  <div class="card custom_card">
-                   <img src="${
-                     result.img
-                   }" style="width: 348px; height: 270px;" class="card-img-top" alt="${
+              <div class="card custom_card">
+                <img src="${
+                  result.img
+                }" style="width: 348px; height: 270px;" class="card-img-top" alt="${
               result.name
             }">
-                    <div class="card-body">
-                      <h5 class="card-title">${result.name}</h5>
-                      <p class="card-text">Location: ${result.location}</p>
-                      <p class="card-text">Service: ${result.service}</p>
-                      <a href="./View_Profile/index.html?name=${encodeURIComponent(
-                        result.name
-                      )}&location=${encodeURIComponent(
+                <div class="card-body">
+                  <h5 class="card-title">${result.name}</h5>
+                  <p class="card-text">Location: ${result.location}</p>
+                  <p class="card-text">Service: ${result.service}</p>
+                  <a href="./View_Profile/index.html?name=${encodeURIComponent(
+                    result.name
+                  )}&location=${encodeURIComponent(
               result.location
             )}&service=${encodeURIComponent(
               result.service
             )}&img=${encodeURIComponent(result.img)}&id=${encodeURIComponent(
               result.id
             )}" class="custom_btn p-2">View Profile</a>
-                    </div>
-                  </div>
-                `;
+                </div>
+              </div>
+            `;
             resultsContainer.appendChild(card);
           });
 

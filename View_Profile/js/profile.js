@@ -15,24 +15,41 @@ document.addEventListener("DOMContentLoaded", function () {
     console.warn("No user data found in local storage.");
   }
 
-  const userContainer = document.getElementById("userContainer");
+  toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: true,
+    progressBar: true,
+    positionClass: "toast-top-center",
+    preventDuplicates: true,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: "5000",
+    extendedTimeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "slideDown",
+    hideMethod: "slideUp",
+  };
+
   if (userData) {
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
-       <li class="nav-item">
-    <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
-</li>
+      <li class="nav-item">
+        <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
+      </li>
     `;
 
     document.getElementById("logout").addEventListener("click", function () {
       localStorage.removeItem("user");
-      window.location.href = "./Login/index.html";
+      window.location.href = "../Login/index.html";
     });
   }
 
@@ -52,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("profileService").textContent =
     "Service: " + lawyerService;
 
-  // Construct the correct path for the image
   const imgPath = `../${decodeURIComponent(lawyerImg)}`;
   console.log("Image path: ", imgPath);
   document.getElementById("profileImg").src = imgPath;
@@ -67,10 +83,22 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("submit", function (event) {
       event.preventDefault();
 
+      if (!userData) {
+        toastr.error("You must be logged in to book an appointment.", "Error");
+        setTimeout(function () {
+          window.location.href = "../Login/index.html";
+        }, 1500);
+        return;
+      }
+
       const clientName = document.getElementById("clientName").value;
       const clientEmail = document.getElementById("clientEmail").value;
       const meetingDate = document.getElementById("meetingDate").value;
       const meetingTime = document.getElementById("meetingTime").value;
+
+      // Show loader while waiting for the response
+      var loader = document.getElementById("loader");
+      loader.style.display = "block";
 
       fetch("http://localhost/lawyers_Services/backend/book_meeting.php", {
         method: "POST",
@@ -82,20 +110,28 @@ document.addEventListener("DOMContentLoaded", function () {
           client_email: clientEmail,
           meeting_date: meetingDate,
           meeting_time: meetingTime,
-          lawyer_id: lawyerId, // Include lawyer ID in the request body
+          lawyer_id: lawyerId,
         }),
       })
         .then((response) => response.json())
         .then((data) => {
           if (data.success) {
-            alert("Meeting booked successfully");
+            toastr.success("Meeting booked successfully", "Success");
+
+            // Hide form and show success message
+            document.getElementById("appointmentForm").style.display = "none";
+            document.getElementById("successMessage").style.display = "block";
           } else {
-            alert("Failed to book meeting: " + data.message);
+            toastr.error("Failed to book meeting: " + data.message, "Error");
           }
         })
         .catch((error) => {
           console.error("Error booking meeting:", error);
-          alert("An error occurred. Please try again later.");
+          toastr.error("An error occurred. Please try again later.", "Error");
+        })
+        .finally(() => {
+          // Hide loader regardless of success or failure
+          loader.style.display = "none";
         });
     });
 });
