@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.querySelector(".loader-container").style.display = "flex"; // Show loader
 
-      fetch("http://192.168.1.6/lawyers_Services/backend/search.php", {
+      fetch("http://localhost/lawyers_Services/backend/search.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
             card.classList.add("col-md-4");
             card.innerHTML = `
                   <div class="card">
-                    <img src="${result.img}" class="card-img-top" alt="${
+                   <img src="${
+                     result.img
+                   }" style="width: 348px; height: 270px;" class="card-img-top" alt="${
               result.name
             }">
                     <div class="card-body">

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const MINIMUM_LOADING_TIME = 4000;
     const startTime = Date.now();
 
-    fetch("http://192.168.1.6/lawyers_Services/backend/login.php", {
+    fetch("http://localhost/lawyers_Services/backend/login.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

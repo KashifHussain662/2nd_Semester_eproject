@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     userContainer.innerHTML = `<p>No user data found. Please log in.</p>`;
   }
 
-  fetch("http://192.168.1.6/lawyers_Services/backend/fetch_appointments.php", {
+  fetch("http://localhost/lawyers_Services/backend/fetch_appointments.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

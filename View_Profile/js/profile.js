@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const meetingDate = document.getElementById("meetingDate").value;
       const meetingTime = document.getElementById("meetingTime").value;
 
-      fetch("http://192.168.1.6/lawyers_Services/backend/book_meeting.php", {
+      fetch("http://localhost/lawyers_Services/backend/book_meeting.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
