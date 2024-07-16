@@ -19,9 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
   if (userData) {
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
-      <li class="nav-item">
-        <a class="nav-link text-light custom_btn" href="#" id="logout">Logout</a>
-      </li>
+       <li class="nav-item">
+    <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
+</li>
     `;
 
     document.getElementById("logout").addEventListener("click", function () {

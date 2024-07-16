@@ -103,9 +103,15 @@
     
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
-      <li class="nav-item">
-        <a class="nav-link text-light custom_btn" href="#" id="logout">Logout</a>
-      </li>
+       <li class="nav-item">
+    <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
+</li>
     `;
 
     document.getElementById("logout").addEventListener("click", function () {
@@ -121,7 +127,7 @@
         card.classList.add("col-md-4");
         card.innerHTML = `
           <div class="card mt-4">
-            <img src="${result.img}" class="card-img-top" alt="${result.name}">
+<img src="${result.img}" style="width: 348px; height: 270px;" class="card-img-top" alt="${result.name}">
             <div class="card-body">
               <h5 class="card-title">${result.name}</h5>
               <p class="card-text">Location: ${result.location}</p>

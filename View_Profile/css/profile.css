@@ -16,6 +16,25 @@ body {
     background-color: rgba(0, 0, 0, 0.655);
 
 }
+.nav-link {
+    font-size: 1rem; /* Increase font size */
+    font-weight: 600; /* Make the text bold */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Add a subtle background on hover */
+    color: #f8f9fa; /* Lighten the text color on hover */
+}
+
+.custom_btn {
+    border-radius: 20px; /* Make the logout button rounded */
+}
+
+.custom_btn:hover {
+    background-color: #dc3545; /* Darken the logout button on hover */
+    color: #fff; /* Ensure text is white */
+}
 
 .custom_btn {
     background-color:#665413;
