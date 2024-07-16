@@ -39,22 +39,31 @@ $service = isset($_POST['service']) ? $_POST['service'] : '';
 $created_at = date("Y-m-d H:i:s");
 $img = "";
 
+$uploadDir = '../uploads/'; // Adjust the path to point to the correct location of the uploads directory
+$imgPath = 'uploads/'; // Path to store in the database for displaying the image
+
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
+
 if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
-    $img = '../uploads/' . basename($_FILES['img']['name']);
+    $imgName = basename($_FILES['img']['name']);
+    $img = $uploadDir . $imgName;
     if (!move_uploaded_file($_FILES['img']['tmp_name'], $img)) {
         echo json_encode(["status" => "error", "message" => "Failed to upload image"]);
         exit();
     }
+    $imgPath .= $imgName; // Update the path to store in the database
 }
 
 if ($role === 'lawyer') {
     // Insert into lawyers table
     $stmt = $conn->prepare("INSERT INTO lawyers (name, email, password, role, location, service, created_at, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $name, $email, $password, $role, $location, $service, $created_at, $img);
+    $stmt->bind_param("ssssssss", $name, $email, $password, $role, $location, $service, $created_at, $imgPath);
 } else {
     // Insert into users table (assuming 'customer')
     $stmt = $conn->prepare("INSERT INTO users (name, email, password, role, created_at, img) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $name, $email, $password, $role, $created_at, $img);
+    $stmt->bind_param("ssssss", $name, $email, $password, $role, $created_at, $imgPath);
 }
 
 if ($stmt->execute()) {
