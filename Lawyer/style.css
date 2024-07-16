@@ -1,3 +1,8 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #201f1c;
+}
+
 .lawyer {
     background: url('../images/pexels-photo-3760514.webp') no-repeat center center;
     background-size: cover;

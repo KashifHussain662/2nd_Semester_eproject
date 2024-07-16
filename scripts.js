@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const card = document.createElement("div");
             card.classList.add("col-md-4");
             card.innerHTML = `
-                  <div class="card">
+                  <div class="card custom_card">
                    <img src="${
                      result.img
                    }" style="width: 348px; height: 270px;" class="card-img-top" alt="${
