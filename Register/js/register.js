@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const MINIMUM_LOADING_TIME = 4000;
       const startTime = Date.now();
 
-      fetch("http://192.168.1.6/lawyer_services/backend/register.php", {
+      fetch("http://192.168.1.6/lawyers_Services/backend/register.php", {
         method: "POST",
         body: formData,
       })
