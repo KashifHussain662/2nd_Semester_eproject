@@ -19,7 +19,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 $location = $input['location'] ?? '';
 $services = $input['services'] ?? '';
 
-$sql = "SELECT id, name, location, service, img FROM lawyers WHERE 1=1";
+$sql = "SELECT id, name, email , location, service, img FROM lawyers WHERE 1=1";
 if (!empty($location)) {
     $sql .= " AND location LIKE '%" . $conn->real_escape_string($location) . "%'";
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2024 at 12:21 AM
+-- Generation Time: Jul 17, 2024 at 01:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,23 +42,9 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `client_name`, `client_email`, `meeting_date`, `meeting_time`, `lawyer_id`, `created_at`) VALUES
-(8, 'qq', 'aaa@gmail.com', '1111-11-11', '11:11:00', 1, '2024-07-13 15:53:49'),
-(58, 'Kashi', 's@gmail.com', '2024-12-07', '11:11:00', 4, '2024-07-16 21:34:47'),
-(60, 'Kashi', 's@gmail.com', '2024-12-07', '11:11:00', 4, '2024-07-16 21:39:59'),
-(62, 'ss', 's@gmail.com', '2222-02-22', '14:22:00', 4, '2024-07-16 21:50:55'),
-(64, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 21:58:52'),
-(66, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 21:59:19'),
-(68, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 21:59:56'),
-(70, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 22:00:27'),
-(72, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 22:01:00'),
-(74, 'ss', 's@gmail.com', '0111-11-11', '11:11:00', 4, '2024-07-16 22:01:41'),
-(76, 'ss', 's@gmail.com', '0111-11-11', '11:11:00', 4, '2024-07-16 22:02:09'),
-(78, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 22:02:42'),
-(80, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 22:04:25'),
-(82, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 22:05:50'),
-(84, 'ss', 's@gmail.com', '1111-11-11', '11:11:00', 4, '2024-07-16 22:09:17'),
-(86, 'ss', 's@gmail.com', '0444-02-04', '16:44:00', 4, '2024-07-16 22:09:48'),
-(88, 'ss', 's@gmail.com', '0022-02-22', '16:44:00', 4, '2024-07-16 22:10:36');
+(100, 'Ali', 'ali@gmail.com', '1111-11-11', '11:11:00', 17, '2024-07-17 11:26:52'),
+(102, 'Anas', 'anas@gmail.com', '1111-11-11', '11:11:00', 17, '2024-07-17 11:32:58'),
+(104, 'kamran', 'kamran@gmail.com', '1111-11-11', '11:11:00', 17, '2024-07-17 11:34:49');
 
 -- --------------------------------------------------------
 
@@ -83,22 +69,7 @@ CREATE TABLE `lawyers` (
 --
 
 INSERT INTO `lawyers` (`id`, `name`, `email`, `password`, `location`, `service`, `created_at`, `img`, `role`) VALUES
-(1, 'lawyer', 'lawyer@gmail.com', '$2y$10$HD29ef51Y.J7FzCSf7kUlu3S4ske0SeSkk6vVefrrPMvWa6n9JFy6', 'pakistan', 'criminal', '2024-07-13 08:55:21', 'uploads/Screenshot_1705056485.png', 'lawyer'),
-(2, 'Jane Smith', 'jane.smith@example.com', 'password123', 'lahore', 'civil', '2024-07-16 21:00:24', 'uploads/lawyer_1.webp', 'lawyer'),
-(3, 'Ahmed Khan', 'ahmed.khan@example.com', 'password123', 'islamabad', 'family', '2024-07-16 21:00:24', 'uploads/lawyer_2.webp', 'lawyer'),
-(4, 'Maria Garcia', 'maria.garcia@example.com', 'password123', 'rawalpindi', 'corporate', '2024-07-16 21:00:24', 'uploads/lawyer_3.webp', 'lawyer'),
-(5, 'Wei Zhang', 'wei.zhang@example.com', 'password123', 'faisalabad', 'tax', '2024-07-16 21:00:24', 'uploads/lawyer_4.webp', 'lawyer'),
-(6, 'Aisha Ali', 'aisha.ali@example.com', 'password123', 'multan', 'intellectual property', '2024-07-16 21:00:24', 'uploads/lawyer_5.webp', 'lawyer'),
-(7, 'Carlos Diaz', 'carlos.diaz@example.com', 'password123', 'peshawar', 'labor', '2024-07-16 21:00:24', 'uploads/lawyer_7.webp', 'lawyer'),
-(8, 'Sofia Rossi', 'sofia.rossi@example.com', 'password123', 'quetta', 'constitutional', '2024-07-16 21:00:24', 'uploads/lawyer_8.webp', 'lawyer'),
-(9, 'Michael Brown', 'michael.brown@example.com', 'password123', 'sialkot', 'environmental law', '2024-07-16 21:00:24', 'uploads/lawyer_9.webp', 'lawyer'),
-(10, 'Emily Davis', 'emily.davis@example.com', 'password123', 'gujranwala', 'immigration law', '2024-07-16 21:00:24', 'uploads/lawyer_10.webp', 'lawyer'),
-(11, 'Fatima Yusuf', 'fatima.yusuf@example.com', 'password123', 'sukkur', 'banking law', '2024-07-16 21:00:24', 'uploads/lawyer_11.webp', 'lawyer'),
-(12, 'Daniel Lee', 'daniel.lee@example.com', 'password123', 'hyderabad', 'consumer law', '2024-07-16 21:00:24', 'uploads/lawyer_12.webp', 'lawyer'),
-(13, 'Hana Kim', 'hana.kim@example.com', 'password123', 'mardan', 'human rights law', '2024-07-16 21:00:24', 'uploads/lawyer_13.webp', 'lawyer'),
-(14, 'Liam Johnson', 'liam.johnson@example.com', 'password123', 'bahawalpur', 'real estate law', '2024-07-16 21:00:24', 'uploads/lawyer_14.webp', 'lawyer'),
-(15, 'Olivia Martin', 'olivia.martin@example.com', 'password123', 'sargodha', 'insurance law', '2024-07-16 21:00:24', 'uploads/lawyer_15.webp', 'lawyer'),
-(16, 'John Doe', 'john.doe@example.com', 'password123', 'karachi', 'criminal', '2024-07-16 21:00:24', 'uploads/lawyer_16.webp', 'lawyer');
+(17, 'Kashif', 'kashif@gmail.com', '$2y$10$6YRWvBisBgTVjMGYWG/6EOhYESLKWU1BqzLaI5nmpqF/mcGoKdiqK', 'karachi', 'immigration law', '2024-07-17 08:13:22', 'uploads/lawyer_1.webp', 'lawyer');
 
 -- --------------------------------------------------------
 
@@ -154,13 +125,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `lawyers`
 --
 ALTER TABLE `lawyers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`

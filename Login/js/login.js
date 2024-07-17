@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
               } else if (user.role === "lawyer") {
                 window.location.href = "../Lawyer/index.html";
               } else {
-                window.location.href = "../index.html";
+                window.location.href = "../Admin/index.html";
               }
             }, 1500);
           } else {
