@@ -3,9 +3,14 @@ body {
     background-color: #201f1c;
 }
 
-#main {
-    background: url('../images/register.webp') no-repeat center center;
-    background-size: cover;
+.hero-section {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #16181b;
+    color: #fff;
+    text-align: center;
 }
 .loader {
     border: 16px solid #f3f3f3;
@@ -63,8 +68,6 @@ body {
 }
 
 #main-content {
-    width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;

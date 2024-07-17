@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
        <li class="nav-item">
-      <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
+      <a class="nav-link text-center text-light px-3" href="../About_us/index.html">About Us</a>
   </li>
   <li class="nav-item">
-      <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
+      <a class="nav-link text-center text-light px-3 nav-link-active " href="./index.html">Contact Us</a>
   </li>
   <li class="nav-item">
       <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("logout").addEventListener("click", function () {
       localStorage.removeItem("user");
-      window.location.href = "./Login/index.html";
+      window.location.href = "../Login/index.html";
     });
   } else {
     userContainer.innerHTML = `<p></p>`;

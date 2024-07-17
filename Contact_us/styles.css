@@ -5,12 +5,14 @@ body {
     color: #f8f9fa;
 }
 
-.contact{
-        background: url('../images/bg_image/HomePage_Banner.webp') no-repeat center center;
-           background-size: cover;
-           color: white;
-           text-align: center;
-           height: 100vh;
+.hero-section {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #16181b;
+    color: #fff;
+    text-align: center;
 }
 
 .navbar-brand {
@@ -26,8 +28,14 @@ body {
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
     color: #f8f9fa;
-}
+    margin-right: 3px;
 
+}
+.nav-link-active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f8f9fa;
+    margin-right: 3px;
+}
 .custom_btn {
     background-color: #665413;
     color: white;
