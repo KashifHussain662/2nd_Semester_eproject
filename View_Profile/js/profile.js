@@ -37,10 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const navbarNavItems = document.getElementById("navbarNavItems");
     navbarNavItems.innerHTML = `
       <li class="nav-item">
-        <a class="nav-link text-center text-light px-3" href="./About_us/index.html">About Us</a>
+        <a class="nav-link text-center text-light px-3" href="./index.html">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-center text-light px-3" href="./Contact_us/index.html">Contact Us</a>
+        <a class="nav-link text-center text-light px-3" href="../Contact_us/index.html">Contact Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-light custom_btn btn btn-danger px-3" href="#" id="logout">Logout</a>
@@ -83,55 +83,50 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("submit", function (event) {
       event.preventDefault();
 
-      if (!userData) {
-        toastr.error("You must be logged in to book an appointment.", "Error");
-        setTimeout(function () {
-          window.location.href = "../Login/index.html";
-        }, 1500);
-        return;
-      }
-
       const clientName = document.getElementById("clientName").value;
       const clientEmail = document.getElementById("clientEmail").value;
       const meetingDate = document.getElementById("meetingDate").value;
       const meetingTime = document.getElementById("meetingTime").value;
 
-      // Show loader while waiting for the response
-      var loader = document.getElementById("loader");
-      loader.style.display = "block";
+      // Show the loader
+      document.getElementById("loader").style.display = "flex";
 
-      fetch("http://localhost/lawyers_Services/backend/book_meeting.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          client_name: clientName,
-          client_email: clientEmail,
-          meeting_date: meetingDate,
-          meeting_time: meetingTime,
-          lawyer_id: lawyerId,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            toastr.success("Meeting booked successfully", "Success");
+      setTimeout(() => {
+        fetch("http://localhost/lawyers_Services/backend/book_meeting.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            client_name: clientName,
+            client_email: clientEmail,
+            meeting_date: meetingDate,
+            meeting_time: meetingTime,
+            lawyer_id: lawyerId,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Hide the loader
+            document.getElementById("loader").style.display = "none";
 
-            // Hide form and show success message
-            document.getElementById("appointmentForm").style.display = "none";
-            document.getElementById("successMessage").style.display = "block";
-          } else {
-            toastr.error("Failed to book meeting: " + data.message, "Error");
-          }
-        })
-        .catch((error) => {
-          console.error("Error booking meeting:", error);
-          toastr.error("An error occurred. Please try again later.", "Error");
-        })
-        .finally(() => {
-          // Hide loader regardless of success or failure
-          loader.style.display = "none";
-        });
+            if (data.success) {
+              toastr.success("Meeting booked successfully", "Success");
+
+              // Hide form and show success message
+              document.getElementById("appointmentForm").style.display = "none";
+              document.getElementById("successMessage").style.display = "block";
+            } else {
+              toastr.error("Failed to book meeting: " + data.message, "Error");
+            }
+          })
+          .catch((error) => {
+            // Hide the loader
+            document.getElementById("loader").style.display = "none";
+
+            console.error("Error booking meeting:", error);
+            toastr.error("An error occurred. Please try again later.", "Error");
+          });
+      }, 2000); // Delay of 2 seconds before making the fetch request
     });
 });

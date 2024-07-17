@@ -121,16 +121,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
           console.log(results);
 
-          filteredResults.slice(0, 3).forEach((result) => {
-            const card = document.createElement("div");
-            card.classList.add("col-md-4");
-            card.innerHTML = `
+          if (filteredResults.length === 0) {
+            const noResultsMessage = document.createElement("h1");
+            noResultsMessage.classList.add("text-light");
+            noResultsMessage.textContent =
+              "No lawyers available for the selected criteria.";
+            resultsContainer.appendChild(noResultsMessage);
+          } else {
+            filteredResults.slice(0, 3).forEach((result) => {
+              const card = document.createElement("div");
+              card.classList.add("col-md-4");
+              card.innerHTML = `
               <div class="card custom_card">
                 <img src="${
                   result.img
                 }" style="width: 348px; height: 270px;" class="card-img-top" alt="${
-              result.name
-            }">
+                result.name
+              }">
                 <div class="card-body">
                   <h5 class="card-title">${result.name}</h5>
                   <p class="card-text">Location: ${result.location}</p>
@@ -138,31 +145,32 @@ document.addEventListener("DOMContentLoaded", function () {
                   <a href="./View_Profile/index.html?name=${encodeURIComponent(
                     result.name
                   )}&location=${encodeURIComponent(
-              result.location
-            )}&service=${encodeURIComponent(
-              result.service
-            )}&img=${encodeURIComponent(result.img)}&id=${encodeURIComponent(
-              result.id
-            )}" class="custom_btn p-2">View Profile</a>
+                result.location
+              )}&service=${encodeURIComponent(
+                result.service
+              )}&img=${encodeURIComponent(result.img)}&id=${encodeURIComponent(
+                result.id
+              )}" class="custom_btn p-2">View Profile</a>
                 </div>
               </div>
             `;
-            resultsContainer.appendChild(card);
-          });
+              resultsContainer.appendChild(card);
+            });
 
-          // Store all results in localStorage to access them on allResults.html page
-          localStorage.setItem(
-            "searchResults",
-            JSON.stringify(filteredResults)
-          );
+            // Store all results in localStorage to access them on allResults.html page
+            localStorage.setItem(
+              "searchResults",
+              JSON.stringify(filteredResults)
+            );
 
-          // Add "View All Results" button
-          if (filteredResults.length > 3) {
-            const viewAllButton = document.createElement("a");
-            viewAllButton.classList.add("custom_btn", "mt-4", "self-center");
-            viewAllButton.href = "./allResults.html";
-            viewAllButton.textContent = "View All Results";
-            resultsContainer.appendChild(viewAllButton);
+            // Add "View All Results" button
+            if (filteredResults.length > 3) {
+              const viewAllButton = document.createElement("a");
+              viewAllButton.classList.add("custom_btn", "mt-4", "self-center");
+              viewAllButton.href = "./allResults.html";
+              viewAllButton.textContent = "View All Results";
+              resultsContainer.appendChild(viewAllButton);
+            }
           }
         })
         .catch((error) => {

@@ -31,10 +31,23 @@ body {
 }
 
 .custom_btn {
-    border-radius: 20px; /* Make the logout button rounded */
+    background-color:#665413;
+    color: white;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: 1px solid #99971f67;
+    padding:5px;
+    border-radius:4px ;
+
 }
 
+
 .custom_btn:hover {
-    background-color: #dc3545; /* Darken the logout button on hover */
-    color: #fff; /* Ensure text is white */
+    background-color:#15140d;
+    color:#e3bd15;
+    border: 1px solid #907c33;
+    box-shadow: 0px 0px 10px 0px #a08923;
+    font-size: 1.1rem;
+
+
 }

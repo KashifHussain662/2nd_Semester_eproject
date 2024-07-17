@@ -4,7 +4,7 @@ body {
 }
 
 #main {
-    background: url('../images/register.webp') no-repeat center center;
+    background: url('../../images/bg_image/HomePage_Banner.webp') no-repeat center center;
     background-size: cover;
 }
 

@@ -4,37 +4,48 @@ body {
 }
 
 /* Loader CSS */
-.loader-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8);
-    display: none; /* Hidden by default, shown when needed */
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-  }
-
-  .loader {
+.loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #3498db;
+    border-top: 16px solid #665413;
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
-  }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
 
-  @keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
+
+.loader-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(12, 11, 11, 0.571);
+    z-index: 9998;
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+}
 
 
 #main {
-    background: url('../images/register.webp') no-repeat center center;
-    background-size: cover;
+    padding-top:100px ;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #16181b;
+    color: #fff;
+    text-align: center;
 }
 
 #main-content {
@@ -54,6 +65,13 @@ body {
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Add a subtle background on hover */
     color: #f8f9fa; /* Lighten the text color on hover */
+}
+
+.card-img{
+    width: 250px;
+    /* height: 250px; */
+    border-radius: 50px;
+    resize: cover;
 }
 
 .custom_btn {
