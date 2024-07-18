@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2024 at 01:38 PM
+-- Generation Time: Jul 17, 2024 at 10:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,7 +69,8 @@ CREATE TABLE `lawyers` (
 --
 
 INSERT INTO `lawyers` (`id`, `name`, `email`, `password`, `location`, `service`, `created_at`, `img`, `role`) VALUES
-(17, 'Kashif', 'kashif@gmail.com', '$2y$10$6YRWvBisBgTVjMGYWG/6EOhYESLKWU1BqzLaI5nmpqF/mcGoKdiqK', 'karachi', 'immigration law', '2024-07-17 08:13:22', 'uploads/lawyer_1.webp', 'lawyer');
+(17, 'Kashif Hussain', 'kashif@gmail.com', '$2y$10$6YRWvBisBgTVjMGYWG/6EOhYESLKWU1BqzLaI5nmpqF/mcGoKdiqK', 'karachi', 'immigration law', '2024-07-17 08:13:22', 'uploads/lawyer_1.webp', 'lawyer'),
+(19, 'Ahmed', 'ahmed@gmail.com', '$2y$10$y7mtFreKx.EOfaAiG6FnDuRW7Tf.WnjoovhTnAPsbwTLlL6Rbhuja', 'sargodha', 'consumer law', '2024-07-17 17:16:34', 'uploads/lawyer_7.webp', 'lawyer');
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `img`, `role`) VALUES
-(6, 'Mohib', 'mohib@gmail.com', '$2y$10$TpGcr3nZu/3WAd6mnOIEp.36fqMKpaffKgnt7dtqstwmlAmGwFjPm', '2024-07-16 17:43:59', 'uploads/l.webp', 'customer');
+(6, 'Mohib Khan', 'mohib@gmail.com', '$2y$10$TpGcr3nZu/3WAd6mnOIEp.36fqMKpaffKgnt7dtqstwmlAmGwFjPm', '2024-07-16 17:43:59', 'uploads/l.webp', 'customer'),
+(7, 'Admin', 'admin@gmail.com', '$2y$10$GFPdSJE8vtzEQNgE2AMLqu4c/698OorwKmuvq3VNIx4mdIvS/ENNK', '2024-07-17 16:30:59', 'uploads/lawyer_1.webp', NULL);
 
 --
 -- Indexes for dumped tables
@@ -131,13 +133,13 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `lawyers`
 --
 ALTER TABLE `lawyers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

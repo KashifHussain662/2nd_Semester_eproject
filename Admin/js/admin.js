@@ -1,4 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const user = localStorage.getItem("user");
+  let userData = null;
+
+  console.log("User data from local storage:", user);
+
+  if (user && user !== "undefined") {
+    try {
+      userData = JSON.parse(user);
+      console.log("Parsed user data:", userData);
+    } catch (e) {
+      console.error("Error parsing user data:", e);
+    }
+  } else {
+    console.warn("No user data found in local storage.");
+  }
+
+  const userContainer = document.getElementById("userContainer");
+  if (userData) {
+    const navbarNavItems = document.getElementById("navbarNavItems");
+    navbarNavItems.innerHTML = `
+      <li class="nav-item">
+        <a class="nav-link text-light custom_btn px-3" href="#" id="logout">Logout</a>
+      </li>
+    `;
+
+    document.getElementById("logout").addEventListener("click", function () {
+      localStorage.removeItem("user");
+      window.location.href = "../Login/index.html";
+    });
+  } else {
+    userContainer.innerHTML = `<p></p>`;
+  }
   // Fetch Lawyers Data
   fetch("http://localhost/lawyers_Services/backend/search.php")
     .then((response) => response.json())
@@ -13,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${lawyer.location}</td>
                     <td>${lawyer.service}</td>
                     <td>
-                        <button class="btn btn-sm btn-primary edit-lawyer" data-id="${lawyer.id}">Edit</button>
-                        <button class="btn btn-sm btn-danger delete-lawyer" data-id="${lawyer.id}">Delete</button>
+                        <button class="custom_btn edit-lawyer" data-id="${lawyer.id}">Edit</button>
+                        <button class="custom_btn delete-lawyer" data-id="${lawyer.id}">Delete</button>
                     </td>
                 </tr>`;
         lawyersTable.innerHTML += row;
@@ -73,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
                       <td>${user.name}</td>
                       <td>${user.email}</td>
                       <td>
-                          <button class="btn btn-sm btn-primary edit-user" data-id="${user.id}">Edit</button>
-                          <button class="btn btn-sm btn-danger delete-user" data-id="${user.id}">Delete</button>
+                          <button class="custom_btn edit-user" data-id="${user.id}">Edit</button>
+                          <button class="custom_btn delete-user" data-id="${user.id}">Delete</button>
                       </td>
                   </tr>`;
         usersTable.innerHTML += row;
