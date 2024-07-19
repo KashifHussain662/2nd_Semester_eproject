@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2024 at 10:19 PM
+-- Generation Time: Jul 18, 2024 at 10:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -70,7 +70,10 @@ CREATE TABLE `lawyers` (
 
 INSERT INTO `lawyers` (`id`, `name`, `email`, `password`, `location`, `service`, `created_at`, `img`, `role`) VALUES
 (17, 'Kashif Hussain', 'kashif@gmail.com', '$2y$10$6YRWvBisBgTVjMGYWG/6EOhYESLKWU1BqzLaI5nmpqF/mcGoKdiqK', 'karachi', 'immigration law', '2024-07-17 08:13:22', 'uploads/lawyer_1.webp', 'lawyer'),
-(19, 'Ahmed', 'ahmed@gmail.com', '$2y$10$y7mtFreKx.EOfaAiG6FnDuRW7Tf.WnjoovhTnAPsbwTLlL6Rbhuja', 'sargodha', 'consumer law', '2024-07-17 17:16:34', 'uploads/lawyer_7.webp', 'lawyer');
+(19, 'Ahmed', 'ahmed@gmail.com', '$2y$10$y7mtFreKx.EOfaAiG6FnDuRW7Tf.WnjoovhTnAPsbwTLlL6Rbhuja', 'sargodha', 'consumer law', '2024-07-17 17:16:34', 'uploads/lawyer_7.webp', 'lawyer'),
+(20, 'Mesam', 'mesam@gmail.com', '$2y$10$qlDZaLGuB0Juj/m5oUAuJ.pC23Jc0xMNNYtJ7IkF39o1jECwWCTkS', 'karachi', 'tax law', '2024-07-18 15:48:57', 'uploads/lawyer_9.webp', 'lawyer'),
+(21, 'Ramsha', 'ramsha@gmail.com', '$2y$10$oJnFvQzjc/1cnsfow21wf.75h5dnyQbVjV7/w5jXOnBlrFvrUpyS.', 'sargodha', 'criminal law', '2024-07-18 15:49:49', 'uploads/lawyer_12.webp', 'lawyer'),
+(22, 'Hira', 'hira@gmail.com', '$2y$10$YSWWZgw5F/Hmzh0Dil8Po.Kmj5z//uc3AnM.CuwRkRnUh1xHIS58e', 'hyderabad', 'insurance law', '2024-07-18 15:54:37', 'uploads/lawyer_11.webp', 'lawyer');
 
 -- --------------------------------------------------------
 
@@ -133,7 +136,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `lawyers`
 --
 ALTER TABLE `lawyers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
