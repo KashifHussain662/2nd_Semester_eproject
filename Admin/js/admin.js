@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.text())
         .then((data) => {
           alert(data);
-          window.location.reload(); // Explicitly reference window.location.reload
+          window.location.reload();
         })
         .catch((error) => console.error("Error updating lawyer:", error));
     });
